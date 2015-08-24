@@ -1,5 +1,5 @@
 Shrota::Application.routes.draw do
-  # devise_for :users
+  resources :events
   devise_for :users,
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification',
                            unlock: 'unblock', sign_up: 'register' },
