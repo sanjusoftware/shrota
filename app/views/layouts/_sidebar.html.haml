@@ -24,17 +24,21 @@
     / /.search form
     / Sidebar Menu
     %ul.sidebar-menu
-      %li.header HEADER
+      %li.header EVENTS
       / Optionally, you can add icons to the links
       %li.active
         %a{:href => "#"}
-          %i.fa.fa-link
-          %span Link
+          %i.fa.fa-calendar.text-aqua
+          %span My Conferences
       %li
         %a{:href => "#"}
-          %i.fa.fa-link
-          %span Another Link
-      %li.treeview
+          %i.fa.fa-calendar.text-red
+          %span Recent Conferences
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-calendar.text-yellow
+          %span Past Conferences
+      -#%li.treeview
         %a{:href => "#"}
           %i.fa.fa-link
           %span Multilevel
