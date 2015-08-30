@@ -16,10 +16,10 @@
     / Sidebar toggle button
     %a.sidebar-toggle{"data-toggle" => 'offcanvas', :href => '#', :role => 'button'}
       %span.sr-only Toggle navigation
-    - if user_signed_in?
-      / Navbar Right Menu
-      .navbar-custom-menu
-        %ul.nav.navbar-nav
+    / Navbar Right Menu
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        - if user_signed_in?
           / Messages: style can be found in dropdown.less
           %li.dropdown.messages-menu
             / Menu toggle button
@@ -128,3 +128,6 @@
           %li
             %a{"data-toggle" => "control-sidebar", :href => "#"}
               %i.fa.fa-gears
+        - else
+          %li
+            = link_to 'Login', new_user_session_path

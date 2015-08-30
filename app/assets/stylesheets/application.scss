@@ -12,8 +12,9 @@
  *= require_self
  *= require_tree .
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "AdminLTE/AdminLTE";
-@import "AdminLTE/skins/skin-black-light";
+@import "AdminLTE/skins/skin-black";
 

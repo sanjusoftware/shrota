@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }
+  has_many :events
 
   def confirmation_required?
     super && email.present?

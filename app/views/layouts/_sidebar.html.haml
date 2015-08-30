@@ -24,20 +24,28 @@
     / /.search form
     / Sidebar Menu
     %ul.sidebar-menu
-      %li.header EVENTS
+      %li.header CONFERENCES
       / Optionally, you can add icons to the links
       %li.active
-        %a{:href => "#"}
+        = link_to user_events_path(current_user) do
           %i.fa.fa-calendar.text-aqua
           %span My Conferences
       %li
-        %a{:href => "#"}
-          %i.fa.fa-calendar.text-red
-          %span Recent Conferences
+        %a{:href => '#'}
+          %i.fa.fa-fire.text-red
+          %span Most Watched
       %li
-        %a{:href => "#"}
-          %i.fa.fa-calendar.text-yellow
-          %span Past Conferences
+        %a{:href => '#'}
+          %i.fa.fa-comments-o.text-yellow
+          %span Most Debated
+      %li
+        %a{:href => '#'}
+          %i.fa.fa-bolt.text-yellow
+          %span Most Recent
+      %li
+        %a{:href => '#'}
+          %i.fa.fa-beer.text-danger
+          %span Most Enjoyed
       -#%li.treeview
         %a{:href => "#"}
           %i.fa.fa-link
