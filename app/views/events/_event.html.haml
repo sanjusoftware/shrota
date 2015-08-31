@@ -1,0 +1,6 @@
+%article.white-panel.col-md-3.col-xs-6
+  = image_tag(event.image)
+  %h4
+    = link_to event.name, user_event_path(current_user, event)
+  %p
+    = event.description

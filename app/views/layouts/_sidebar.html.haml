@@ -27,7 +27,7 @@
       %li.header CONFERENCES
       / Optionally, you can add icons to the links
       %li.active
-        = link_to user_events_path(current_user) do
+        = link_to user_events_path(current_user.id) do
           %i.fa.fa-calendar.text-aqua
           %span My Conferences
       %li

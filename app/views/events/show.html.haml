@@ -1,21 +1,12 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Starts at:
-  = @event.starts_at
-%p
-  %b Ends at:
-  = @event.ends_at
-%p
-  %b User:
-  = @event.user_id
-
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        %h4.box-title
+          = @event.name
+        %span.pull-right
+          = link_to 'Update', edit_user_event_path(current_user, @event)
+      .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
+      .box-body
+        %p
+          = @event.description
