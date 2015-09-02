@@ -4,3 +4,16 @@
     = link_to event.name, user_event_path(current_user, event)
   %p
     = event.description
+  - if event.tags.present?
+    %hr
+    %p
+      %span.tags
+        - event.tags.each do |tag|
+          = link_to "##{tag}", '#'
+  %hr
+  %p
+    %small.pull-right
+      - if event.starts_at.year == event.ends_at.year
+        = "#{event.starts_at.strftime('%d %b')} - #{event.ends_at.strftime('%d %b %Y')}"
+      - else
+        = "#{event.starts_at.strftime('%d %b %Y')} - #{event.ends_at.strftime('%d %b %Y')}"

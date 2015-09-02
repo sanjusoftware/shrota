@@ -36,6 +36,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'acts-as-taggable-on'
+gem 'select2-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
