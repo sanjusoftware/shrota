@@ -1,1 +1,6 @@
 = render 'form', title: 'Editing event'
+:javascript
+  $(document).on('page:change', function () {
+    var event = #{@event.to_json}
+    gmap_form(event);  // form map for edit view (print marker and possibility of put newer)
+  });

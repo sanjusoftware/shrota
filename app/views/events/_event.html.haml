@@ -12,8 +12,10 @@
           = link_to "##{tag}", '#'
   %hr
   %p
-    %small.pull-right
-      - if event.starts_at.year == event.ends_at.year
-        = "#{event.starts_at.strftime('%d %b')} - #{event.ends_at.strftime('%d %b %Y')}"
-      - else
-        = "#{event.starts_at.strftime('%d %b %Y')} - #{event.ends_at.strftime('%d %b %Y')}"
+    %small
+      = event.address
+      .pull-right
+        - if event.starts_at.year == event.ends_at.year
+          = "#{event.starts_at.strftime('%d %b')} - #{event.ends_at.strftime('%d %b %Y')}"
+        - else
+          = "#{event.starts_at.strftime('%d %b %Y')} - #{event.ends_at.strftime('%d %b %Y')}"

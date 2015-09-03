@@ -44,6 +44,17 @@
             .col-sm-10
               = f.file_field :image
               %p.help-block This image appears as the identity of your event...make it count
+          .form-group
+            = f.label :where, :class => 'col-sm-2 control-label'
+            .col-sm-10
+              #map{:style => 'width: 550px; height: 350px;'}
+              = f.hidden_field :lat, id: 'map_lat'
+              = f.hidden_field :lng, id: 'map_lng'
         .box-footer
           = link_to 'Cancel', root_path, :class => 'btn btn-default'
           = f.submit 'Save', :class => 'btn btn-info pull-right'
+
+:javascript
+  $(document).ready(function(){
+    gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
+  });

@@ -16,3 +16,15 @@
           %span.tags
             - @event.tags.each do |tag|
               = link_to "##{tag}", '#'
+        - if @event.address.present?
+          %hr
+          Venue:
+          = @event.address
+          %br
+          %br
+          #map{:style => 'width: 550px; height: 350px;'}
+
+:javascript
+  var event = #{@event.to_json}    // pass ruby variable to javascript
+  gmap_show(event);    // init show map for event card (only print marker)
+

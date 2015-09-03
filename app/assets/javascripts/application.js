@@ -23,10 +23,11 @@
 //= require fullcalendar
 //= require bootstrap-slider
 //= require select2
+//= require gmaps/google
 //= require app
 //= require_tree .
 
-$(document).on('page:change page:load', function () {
+$(document).on('page:change', function () {
     $(".select2").select2({tags: []});
     //Datemask dd/mm/yyyy
     $(".date-mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});

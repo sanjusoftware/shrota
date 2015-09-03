@@ -38,6 +38,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'select2-rails'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

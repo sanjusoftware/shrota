@@ -1,1 +1,5 @@
 = render 'form', title: 'Adding new event'
+:javascript
+  $(document).on('page:change', function () {
+    gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
+  });
