@@ -2,11 +2,19 @@
   min-height: 300px;
 }
 
+.address {
+  font-size: 10px;
+}
+.text-muted {
+  color: #ccc;
+}
+
 span.tags a {
   color: #ccc;
   font-size: 0.9em;
   margin-right: 2px;
 }
+
 span.tags a:hover {
   color: #343434;
 }

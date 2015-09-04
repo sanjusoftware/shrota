@@ -35,7 +35,7 @@ $(document).on('page:change', function () {
     //add javascript that needs to be applied to dynamically added elements in this block
     //
     $('#pinBoot').pinterest_grid({
-        no_columns: 4,
+        no_columns: 3,
         padding_x: 15,
         padding_y: 15,
         margin_bottom: 50,
