@@ -5,24 +5,24 @@
         %h4.box-title
           = @event.name
         %span.pull-right
-          = link_to 'Edit', edit_user_event_path(current_user, @event)
+          = link_to edit_user_event_path(current_user, @event) do
+            %i.fa.fa-pencil-square-o
       .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
       .box-body
         %p
           = @event.description
         %hr
         %p
-          Featured In
           %span.tags
             - @event.tags.each do |tag|
               = link_to "##{tag}", '#'
         - if @event.address.present?
           %hr
-          Venue:
+          %i.fa.fa-map-marker
           = @event.address
           %br
           %br
-          #map{:style => 'width: 550px; height: 350px;'}
+          #map{:style => 'width: 100% ; height: 350px;'}
 
 :javascript
   var event = #{@event.to_json}    // pass ruby variable to javascript
