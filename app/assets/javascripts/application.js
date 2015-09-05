@@ -24,8 +24,17 @@
 //= require bootstrap-slider
 //= require select2
 //= require gmaps/google
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-ajax
 //= require app
 //= require_tree .
+
+NProgress.configure({
+    showSpinner: false,
+    ease: 'ease',
+    speed: 500
+});
 
 $(document).on('page:change', function () {
     $(".select2").select2({tags: []});

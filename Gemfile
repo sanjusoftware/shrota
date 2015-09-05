@@ -40,6 +40,7 @@ gem 'acts-as-taggable-on'
 gem 'select2-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'nprogress-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
