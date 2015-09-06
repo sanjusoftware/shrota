@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Topic:
+  = @talk.topic
+%p
+  %b Details:
+  = @talk.details
+%p
+  %b Starts at:
+  = @talk.starts_at
+%p
+  %b Duration:
+  = @talk.duration
+%p
+  %b Event:
+  = @talk.event_id
+
+= link_to 'Edit', edit_talk_path(@talk)
+\|
+= link_to 'Back', talks_path

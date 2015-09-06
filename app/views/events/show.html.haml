@@ -9,12 +9,22 @@
       .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
       .box-body
         %p
-          = @event.description
+          = @event.description.present? ? @event.description : "We don't have much to describe this event as of now."
+        - if @event.tags.present?
+          %hr
+          %p
+            %span.tags
+              - @event.tags.each do |tag|
+                = link_to "##{tag}", '#'
         %hr
-        %p
-          %span.tags
-            - @event.tags.each do |tag|
-              = link_to "##{tag}", '#'
+        - if @event.talks.present?
+          - @event.talks.each do |talk|
+            %p
+              %span.tags
+                - @event.tags.each do |tag|
+                  = link_to "##{tag}", '#'
+        - else
+          = link_to 'Add Talk', new_event_talk_path(@event)
         - if @event.address.present?
           %hr
           %i.fa.fa-map-marker

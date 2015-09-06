@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905172619) do
+ActiveRecord::Schema.define(version: 20150906041337) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20150905172619) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "talks", force: :cascade do |t|
+    t.string   "topic"
+    t.text     "details"
+    t.datetime "starts_at"
+    t.decimal  "duration"
+    t.integer  "event_id"
+    t.integer  "created_by_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name",              default: "", null: false

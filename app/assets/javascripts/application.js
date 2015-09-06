@@ -17,8 +17,8 @@
 //= require turbolinks
 //= require jquery.slimscroll
 //= require iCheck
-//= require bootstrap-datepicker
-//= require daterangepicker
+//= require moment
+//= require bootstrap-datetimepicker
 //= require bootstrap-timepicker
 //= require fullcalendar
 //= require bootstrap-slider
@@ -41,8 +41,9 @@ $(document).on('page:change', function () {
     //Datemask dd/mm/yyyy
     $(".date-mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
-    //add javascript that needs to be applied to dynamically added elements in this block
-    //
+    $('.date-time-range').datetimepicker();
+
+
     $('#pinBoot').pinterest_grid({
         no_columns: 3,
         padding_x: 15,

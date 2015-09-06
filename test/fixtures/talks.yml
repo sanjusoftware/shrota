@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: MyString
+  details: MyText
+  starts_at: 2015-09-06 09:43:37
+  duration: 9.99
+  event_id: 1
+
+two:
+  topic: MyString
+  details: MyText
+  starts_at: 2015-09-06 09:43:37
+  duration: 9.99
+  event_id: 1

@@ -1,10 +1,14 @@
 Shrota::Application.routes.draw do
+  resources :talks
   devise_for :users,
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification',
                            unlock: 'unblock', sign_up: 'register' },
              :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', registrations: 'users/registrations'}
 
-  resources :events
+  resources :events do
+    resources :talks
+  end
+
   resources :users do
     resources :events
   end

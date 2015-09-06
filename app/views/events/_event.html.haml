@@ -7,7 +7,6 @@
       %small.pull-right.external-ink
         = link_to event.website, target: :blank do
           %i.fa.fa-link
-
   %p
     = truncate(event.description, length: 500) { link_to 'keep reading', event_path(event) }
   - if event.tags.present?
@@ -16,8 +15,10 @@
       %span.tags
         - event.tags.each do |tag|
           = link_to "##{tag}", '#'
-  %hr
-    Talks
+  - if event.talks.present?
+    %hr
+      - event.talks.each do |talk|
+        = talk.name
   %hr
   %small.text-muted
     .address

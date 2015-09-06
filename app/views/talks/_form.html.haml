@@ -1,0 +1,44 @@
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        %h3.box-title
+          = title
+      = form_for [@event, @talk], :html => {:class => 'form-horizontal'} do |f|
+        - if @talk.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@talk.errors.count, 'error')} prohibited this event from being saved:"
+            %ul
+              - @talk.errors.full_messages.each do |msg|
+                %li= msg
+
+        .box-body
+          .form-group
+            = f.label :topic, :class => 'col-sm-2 control-label'
+            .col-sm-10
+              = f.text_field :topic, :class => 'form-control', :placeholder => 'Topic'
+          .form-group
+            = f.label :details, :class => 'col-sm-2 control-label'
+            .col-sm-10
+              = f.text_area :details, :class => 'form-control', :placeholder => 'Details'
+          .form-group
+            = f.label "What's it about?", :class => 'col-sm-2 control-label'
+            .col-sm-10
+              = f.text_field :tag_list, :class => 'form-control select2', :placeholder => 'Tags (separated by commas)', :value => f.object.tag_list.join(', ')
+          .form-group
+            = f.label :starts_at, :class => 'col-sm-2 control-label'
+            .col-sm-10
+              .input-group.date
+                .input-group-addon
+                  %i.fa.fa-calendar
+                = f.text_field :starts_at, :class => 'form-control date-time-range'
+          .form-group
+            = f.label :duration, :class => 'col-sm-2 control-label'
+            .col-sm-2
+              .input-group
+                .input-group-addon
+                  %i.fa.fa-clock-o
+                = f.number_field :duration, :class => 'form-control', :placeholder => '30 mins'
+        .box-footer
+          = link_to 'Cancel', root_path, :class => 'btn btn-default'
+          = f.submit 'Save', :class => 'btn btn-info pull-right'
