@@ -5,14 +5,26 @@
 .address {
   font-size: 10px;
 }
+
 .text-muted {
   color: #ccc;
 }
 
 span.tags a {
   color: #ccc;
-  font-size: 0.9em;
   margin-right: 2px;
+}
+
+.external-ink a {
+  color: #cfcfcf;
+}
+
+h3 a {
+  color: #343434;
+}
+
+h3 a:hover {
+  color: #343434;
 }
 
 span.tags a:hover {

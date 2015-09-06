@@ -4,6 +4,7 @@ Shrota::Application.routes.draw do
                            unlock: 'unblock', sign_up: 'register' },
              :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', registrations: 'users/registrations'}
 
+  resources :events
   resources :users do
     resources :events
   end

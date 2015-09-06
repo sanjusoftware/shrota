@@ -5,8 +5,7 @@
         %h4.box-title
           = @event.name
         %span.pull-right
-          = link_to edit_user_event_path(current_user, @event) do
-            %i.fa.fa-pencil-square-o
+          = link_to 'Edit', edit_user_event_path(current_user, @event)
       .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
       .box-body
         %p
@@ -23,7 +22,20 @@
           %br
           %br
           #map{:style => 'width: 100% ; height: 350px;'}
-
+        - if @event.contact_email.present? || @event.mailing_list.present?
+          %hr
+          %h4 Contacts
+          .row
+            - if @event.contact_email.present?
+              .col-md-6.col-sm-12
+                %i.fa.fa-envelope-o
+                Email :
+                = @event.contact_email
+              - if @event.mailing_list.present?
+                .col-md-6.col-sm-12
+                  %i.fa.fa-envelope-o
+                  Mailing List :
+                  = @event.mailing_list
 :javascript
   var event = #{@event.to_json}    // pass ruby variable to javascript
   gmap_show(event);    // init show map for event card (only print marker)

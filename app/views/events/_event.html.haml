@@ -1,10 +1,15 @@
 .white-panel.col-md-3.col-xs-6
-  = link_to user_event_path(current_user, event) do
-    = image_tag(event.image)
-    %h4
+  = image_tag(event.image)
+  %h3
+    = link_to event_path(event) do
       = event.name
+    - if event.website.present?
+      %small.pull-right.external-ink
+        = link_to event.website, target: :blank do
+          %i.fa.fa-link
+
   %p
-    = event.description
+    = truncate(event.description, length: 500) { link_to 'keep reading', event_path(event) }
   - if event.tags.present?
     %hr
     %p
@@ -12,9 +17,12 @@
         - event.tags.each do |tag|
           = link_to "##{tag}", '#'
   %hr
+    Talks
+  %hr
   %small.text-muted
     .address
       %span.duration.pull-right
         = duration(event.starts_at, event.ends_at)
-      %i.fa.fa-map-marker
-      = event.address
+      - if event.address.present?
+        %i.fa.fa-map-marker
+        = event.address
