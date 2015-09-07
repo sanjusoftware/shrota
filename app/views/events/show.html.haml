@@ -20,9 +20,7 @@
         - if @event.talks.present?
           - @event.talks.each do |talk|
             %p
-              %span.tags
-                - @event.tags.each do |tag|
-                  = link_to "##{tag}", '#'
+              = talk.topic
         - else
           = link_to 'Add Talk', new_event_talk_path(@event)
         - if @event.address.present?

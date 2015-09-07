@@ -43,6 +43,7 @@ gem 'geocoder'
 gem 'nprogress-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+gem 'friendly_id', '~> 5.1.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

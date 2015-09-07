@@ -41,7 +41,7 @@ $(document).on('page:change', function () {
     //Datemask dd/mm/yyyy
     $(".date-mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
-    $('.date-time-range').datetimepicker();
+    $('.date-time').datetimepicker();
 
 
     $('#pinBoot').pinterest_grid({

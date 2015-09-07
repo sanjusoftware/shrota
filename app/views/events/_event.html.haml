@@ -1,4 +1,6 @@
 .white-panel.col-md-3.col-xs-6
+  %span.no-of-talks
+    = link_to "#{event.talks.count} talks", event_talks_path(event)
   = image_tag(event.image)
   %h3
     = link_to event_path(event) do
@@ -18,7 +20,7 @@
   - if event.talks.present?
     %hr
       - event.talks.each do |talk|
-        = talk.name
+        = talk.topic
   %hr
   %small.text-muted
     .address

@@ -1,4 +1,8 @@
 class Event < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history, :finders]
+
   belongs_to :user
   has_many :talks
   mount_uploader :image, ImageUploader
@@ -10,4 +14,8 @@ class Event < ActiveRecord::Base
 
   after_validation :reverse_geocode, if: ->(obj){ (obj.lat.present? and obj.lat_changed?) or  (obj.lng.present? and obj.lng_changed?)}
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
 end

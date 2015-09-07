@@ -31,3 +31,19 @@ span.tags a:hover {
   color: #343434;
 }
 
+span.no-of-talks {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  color: #404040;
+  background: #fff;
+  -moz-border-radius: 0 0 0 2px;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 0 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  height: 21px;
+  text-align: right;
+  display: inline-block;
+}
