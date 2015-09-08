@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :history, :finders]
+  friendly_id :name, use: [:slugged, :history]
 
   belongs_to :user
   has_many :talks

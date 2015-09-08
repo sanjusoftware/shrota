@@ -5,7 +5,8 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.all
+    @event = Event.friendly.find(params[:event_id])
+    @talks = @event.talks
   end
 
   # GET /talks/1
@@ -68,7 +69,7 @@ class TalksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      @event = Event.find(params[:event_id])
+      @event = Event.friendly.find(params[:event_id])
       @talk = @event.talks.find(params[:id])
     end
 

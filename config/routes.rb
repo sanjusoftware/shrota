@@ -1,5 +1,4 @@
 Shrota::Application.routes.draw do
-  resources :talks
   devise_for :users,
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification',
                            unlock: 'unblock', sign_up: 'register' },

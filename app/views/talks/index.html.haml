@@ -1,29 +1,109 @@
-%h1 Listing talks
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        %h4.box-title
+          = @event.name
+        %span.pull-right
+          = link_to 'Edit', edit_user_event_path(current_user, @event)
+      .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
+      .box-body
+        %p
+          = @event.description.present? ? @event.description : "We don't have much to describe this event as of now."
 
-%table
-  %thead
-    %tr
-      %th Topic
-      %th Details
-      %th Starts at
-      %th Duration
-      %th Event
-      %th
-      %th
-      %th
+    %ul.timeline
+      %li.time-label
+        %span.bg-green
+          %i.fa.fa-hourglass-start
+          = @event.starts_at.strftime('%d %b. %Y')
 
-  %tbody
-    - @talks.each do |talk|
-      %tr
-        %td= talk.topic
-        %td= talk.details
-        %td= talk.starts_at
-        %td= talk.duration
-        %td= talk.event_id
-        %td= link_to 'Show', talk
-        %td= link_to 'Edit', edit_talk_path(talk)
-        %td= link_to 'Destroy', talk, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @event.talks.each do |talk|
+        %li.time-label
+          %span.bg-green
+            %i.fa.fa-clock-o
+            = talk.starts_at.strftime('%I:%M%p')
+          .timeline-item
+            %span.time
+              %i.fa.fa-clock-o
+              = talk.starts_at.strftime('%I:%M%p')
+            %h3.timeline-header
+              = link_to talk.topic, event_talk_path(@event, talk)
+            .timeline-body
+              = talk.details
+            .timeline-footer
+              %a.btn.btn-primary.btn-xs Read more
+              %a.btn.btn-danger.btn-xs Delete
 
-%br
+      %li.time-label
+        %span.bg-red
+          %i.fa.fa-hourglass-start
+          = @event.ends_at.strftime('%d %b. %Y')
 
-= link_to 'New Talk', new_talk_path
+      / END timeline item
+      / timeline item
+      -#%li
+      -#  %i.fa.fa-user.bg-aqua
+      -#  .timeline-item
+      -#    %span.time
+      -#      %i.fa.fa-clock-o
+      -#      5 mins ago
+      -#    %h3.timeline-header.no-border
+      -#      %a{:href => "#"} Sarah Young
+      -#      accepted your friend request
+      -#/ END timeline item
+      -#/ timeline item
+      -#%li
+      -#  %i.fa.fa-comments.bg-yellow
+      -#  .timeline-item
+      -#    %span.time
+      -#      %i.fa.fa-clock-o
+      -#      27 mins ago
+      -#    %h3.timeline-header
+      -#      %a{:href => "#"} Jay White
+      -#      commented on your post
+      -#    .timeline-body
+      -#      Take me to your leader!
+      -#      Switzerland is small and neutral!
+      -#      We are more like Germany, ambitious and misunderstood!
+      -#    .timeline-footer
+      -#      %a.btn.btn-warning.btn-flat.btn-xs View comment
+      -#/ END timeline item
+      -#/ timeline time label
+      -#%li.time-label
+      -#  %span.bg-green
+      -#    3 Jan. 2014
+      -#/ /.timeline-label
+      -#/ timeline item
+      -#%li
+      -#  %i.fa.fa-camera.bg-purple
+      -#  .timeline-item
+      -#    %span.time
+      -#      %i.fa.fa-clock-o
+      -#      2 days ago
+      -#    %h3.timeline-header
+      -#      %a{:href => "#"} Mina Lee
+      -#      uploaded new photos
+      -#    .timeline-body
+      -#      %img.margin{:alt => "...", :src => "http://placehold.it/150x100"}
+      -#      %img.margin{:alt => "...", :src => "http://placehold.it/150x100"}
+      -#      %img.margin{:alt => "...", :src => "http://placehold.it/150x100"}
+      -#      %img.margin{:alt => "...", :src => "http://placehold.it/150x100"}
+      -#/ END timeline item
+      -#/ timeline item
+      -#%li
+      -#  %i.fa.fa-video-camera.bg-maroon
+      -#  .timeline-item
+      -#    %span.time
+      -#      %i.fa.fa-clock-o
+      -#      5 days ago
+      -#    %h3.timeline-header
+      -#      %a{:href => "#"} Mr. Doe
+      -#      shared a video
+      -#    .timeline-body
+      -#      .embed-responsive.embed-responsive-16by9
+      -#        %iframe.embed-responsive-item{:allowfullscreen => "", :frameborder => "0", :src => "https://www.youtube.com/embed/tMWkeBIohBs"}
+      -#    .timeline-footer
+      -#      %a.btn.btn-xs.bg-maroon{:href => "#"} See comments
+      -#/ END timeline item
+      -#%li
+      -#  %i.fa.fa-clock-o.bg-gray
