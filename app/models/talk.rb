@@ -1,6 +1,6 @@
 class Talk < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :topic, use: [:slugged, :history]
+  friendly_id :topic, use: [:slugged, :history, :finders]
 
   belongs_to :event
   belongs_to :created_by, :class_name => User

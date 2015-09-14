@@ -36,13 +36,13 @@ NProgress.configure({
     speed: 500
 });
 
-$(document).on('page:change', function () {
+$(document).on('ready page:change', function () {
+
     $(".select2").select2({tags: []});
-    //Datemask dd/mm/yyyy
+
     $(".date-mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
     $('.date-time').datetimepicker();
-
 
     $('#pinBoot').pinterest_grid({
         no_columns: 3,

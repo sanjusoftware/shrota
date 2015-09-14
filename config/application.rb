@@ -30,5 +30,6 @@ module Shrota
 
     # forcing application to not access the DB or load models when precompiling your assets
       config.assets.initialize_on_precompile = false
+      config.active_record.raise_in_transactional_callbacks = true
   end
 end

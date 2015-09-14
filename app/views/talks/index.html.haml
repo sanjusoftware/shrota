@@ -5,7 +5,12 @@
         %h4.box-title
           = @event.name
         %span.pull-right
-          = link_to 'Edit', edit_user_event_path(current_user, @event)
+          = link_to edit_user_event_path(current_user, @event), class: 'btn btn-sm btn-primary' do
+            %i.fa.fa-pencil
+            Edit
+          = link_to new_event_talk_path(@event), class: 'btn btn-sm btn-primary' do
+            %i.fa.fa-plus
+            Add Talk
       .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
       .box-body
         %p
@@ -13,26 +18,29 @@
 
     %ul.timeline
       %li.time-label
-        %span.bg-green
+        %span.bg-red
           %i.fa.fa-hourglass-start
           = @event.starts_at.strftime('%d %b. %Y')
 
       - @event.talks.each do |talk|
         %li.time-label
           %span.bg-green
-            %i.fa.fa-clock-o
-            = talk.starts_at.strftime('%I:%M%p')
+            = display_local_time(talk.starts_at)
           .timeline-item
             %span.time
               %i.fa.fa-clock-o
-              = talk.starts_at.strftime('%I:%M%p')
+              = "#{talk.duration}m (until - #{display_local_time((talk.starts_at + 30 * 60))})"
             %h3.timeline-header
               = link_to talk.topic, event_talk_path(@event, talk)
             .timeline-body
               = talk.details
             .timeline-footer
-              %a.btn.btn-primary.btn-xs Read more
-              %a.btn.btn-danger.btn-xs Delete
+              = link_to edit_event_talk_path(@event, talk), class: 'btn btn-primary btn-xs' do
+                %i.fa.fa-pencil
+                Edit
+              = link_to event_talk_path(@event, talk), class: 'btn btn-danger btn-xs', :method => :delete do
+                %i.fa.fa-trash
+                Delete
 
       %li.time-label
         %span.bg-red

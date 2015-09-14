@@ -25,7 +25,7 @@
   %small.text-muted
     .address
       %span.duration.pull-right
-        = duration(event.starts_at, event.ends_at)
+        = display_duration(event.starts_at, event.ends_at)
       - if event.address.present?
         %i.fa.fa-map-marker
         = event.address

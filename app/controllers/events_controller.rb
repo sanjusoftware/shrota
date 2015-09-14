@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to user_events_path(current_user), notice: 'Event was successfully updated.' }
+        format.html { redirect_to user_event_path(current_user, @event), notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

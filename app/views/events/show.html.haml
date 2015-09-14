@@ -5,7 +5,11 @@
         %h4.box-title
           = @event.name
         %span.pull-right
-          = link_to 'Edit', edit_user_event_path(current_user, @event)
+          = link_to edit_user_event_path(current_user, @event), class: 'btn btn-sm btn-primary' do
+            %i.fa.fa-pencil
+            Edit
+          = link_to event_talks_path(@event), class: 'btn btn-sm btn-primary' do
+            Talks
       .event_banner{:style => "background: url(#{@event.image});background-size: cover;background-repeat: no-repeat;background-position: center;position: relative;"}
       .box-body
         %p
@@ -16,13 +20,11 @@
             %span.tags
               - @event.tags.each do |tag|
                 = link_to "##{tag}", '#'
-        %hr
         - if @event.talks.present?
+          %hr
           - @event.talks.each do |talk|
             %p
               = talk.topic
-        - else
-          = link_to 'Add Talk', new_event_talk_path(@event)
         - if @event.address.present?
           %hr
           %i.fa.fa-map-marker

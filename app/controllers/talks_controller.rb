@@ -33,7 +33,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to event_talk_path(@event, @talk), notice: 'Talk was successfully created.' }
+        format.html { redirect_to event_talks_path(@event), notice: 'Talk was successfully created.' }
         format.json { render action: 'show', status: :created, location: @talk }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class TalksController < ApplicationController
   def update
     respond_to do |format|
       if @talk.update(talk_params)
-        format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
+        format.html { redirect_to event_talks_path(@event), notice: 'Talk was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,7 +61,7 @@ class TalksController < ApplicationController
   def destroy
     @talk.destroy
     respond_to do |format|
-      format.html { redirect_to talks_url }
+      format.html { redirect_to event_talks_path(@event) }
       format.json { head :no_content }
     end
   end
@@ -75,6 +75,10 @@ class TalksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
-      params.require(:talk).permit(:topic, :details, :starts_at, :duration, :event_id, :tag_list)
+      valid = params.require(:talk).permit(:topic, :details, :starts_at, :duration, :event_id, :tag_list)
+      date_format = '%m/%d/%Y %I:%M %p'
+      offset = DateTime.now.strftime('%z')
+      valid[:starts_at] = valid[:starts_at] != '' ? DateTime.strptime(valid[:starts_at], date_format).change(:offset => offset).to_s : valid[:starts_at]
+      valid
     end
 end
