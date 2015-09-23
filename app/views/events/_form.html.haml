@@ -36,7 +36,9 @@
           .form-group
             = f.label "What's it about?", :class => 'col-sm-2 control-label'
             .col-sm-10
-              = f.text_field :tag_list, :class => 'form-control select2', :placeholder => 'Tags (separated by commas)', :value => f.object.tag_list.join(', ')
+              = f.text_field :tag_list, :class => 'form-control tag-select', :value => f.object.tag_list.join(', '),
+              data: {:url => autocomplete_tags_path, :placeholder => 'Tags (separated by commas)',
+              saved: f.object.tags.map{|t| {id: t.name, name: t.name}}.to_json}
           .form-group
             = f.label :starts_date, :class => 'col-sm-2 control-label'
             .col-sm-10
@@ -65,8 +67,3 @@
         .box-footer
           = link_to 'Cancel', root_path, :class => 'btn btn-default'
           = f.submit 'Save', :class => 'btn btn-info pull-right'
-
-:javascript
-  $(document).ready(function(){
-    gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
-  });

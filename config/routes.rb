@@ -12,6 +12,8 @@ Shrota::Application.routes.draw do
     resources :events
   end
 
+  get 'autocomplete_tags', to: 'application#autocomplete_tags', as: 'autocomplete_tags'
+
   get 'welcome/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

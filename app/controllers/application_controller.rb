@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || (root_path)
   end
 
+  def autocomplete_tags
+    @tags = ActsAsTaggableOn::Tag.where('name LIKE ?', "#{params[:q]}%").order(:name)
+    respond_to do |format|
+      format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
+    end
+  end
+
 end
