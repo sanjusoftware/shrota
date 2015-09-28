@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   has_many :talks
   mount_uploader :image, ImageUploader
 
+  validates_presence_of :name, :description, :contact_email, :starts_at, :ends_at
+
   acts_as_taggable
 
   geocoded_by :address

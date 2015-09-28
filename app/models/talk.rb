@@ -6,6 +6,8 @@ class Talk < ActiveRecord::Base
   belongs_to :created_by, :class_name => User
   acts_as_taggable
 
+  validates_presence_of :topic, :details, :starts_at, :duration
+
   def yet_to_start?
     Time.zone.now < starts_at.localtime
   end

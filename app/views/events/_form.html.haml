@@ -13,22 +13,22 @@
                 %li= msg
 
         .box-body
-          .form-group
+          .form-group.required
             = f.label :name, :class => 'col-sm-2 control-label'
             .col-sm-10
-              = f.text_field :name, :class => 'form-control', :placeholder => 'Name'
-          .form-group
+              = f.text_field :name, :class => 'form-control', :placeholder => 'Name', :required => 'true'
+          .form-group.required
             = f.label :description, :class => 'col-sm-2 control-label'
             .col-sm-10
-              = f.text_area :description, :class => 'form-control', :placeholder => 'Description'
+              = f.text_area :description, :class => 'form-control', :placeholder => 'Description', :required => 'true'
           .form-group
             = f.label :website, :class => 'col-sm-2 control-label'
             .col-sm-10
               = f.text_field :website, :class => 'form-control', :placeholder => 'http://youreventurl.com'
-          .form-group
+          .form-group.required
             = f.label :contact_email, :class => 'col-sm-2 control-label'
             .col-sm-10
-              = f.text_field :contact_email, :class => 'form-control', :placeholder => 'contact@youreventurl.com'
+              = f.text_field :contact_email, :class => 'form-control', :placeholder => 'contact@youreventurl.com', :required => 'true'
           .form-group
             = f.label :mailing_list, :class => 'col-sm-2 control-label'
             .col-sm-10
@@ -39,26 +39,26 @@
               = f.text_field :tag_list, :class => 'form-control tag-select', :value => f.object.tag_list.join(', '),
               data: {:url => autocomplete_tags_path, :placeholder => 'Tags (separated by commas)',
               saved: f.object.tags.map{|t| {id: t.name, name: t.name}}.to_json}
-          .form-group
+          .form-group.required
             = f.label :starts_date, :class => 'col-sm-2 control-label'
             .col-sm-10
               .input-group
                 .input-group-addon
                   %i.fa.fa-calendar
-                = f.text_field :starts_at, :class => 'form-control date-mask'
-          .form-group
+                = f.text_field :starts_at, :class => 'form-control date-mask', :required => 'true'
+          .form-group.required
             = f.label :ends_date, :class => 'col-sm-2 control-label'
             .col-sm-10
               .input-group
                 .input-group-addon
                   %i.fa.fa-calendar
-                = f.text_field :ends_at, :class => 'form-control date-mask'
+                = f.text_field :ends_at, :class => 'form-control date-mask', :required => 'true'
           .form-group
             = f.label :background_image, :class => 'col-sm-2 control-label'
             .col-sm-10
               = f.file_field :image
               %p.help-block This image appears as the identity of your event...make it count
-          .form-group
+          .form-group.required
             = f.label :where, :class => 'col-sm-2 control-label'
             .col-sm-10
               #map{:style => 'width: 100%; height: 350px;'}
