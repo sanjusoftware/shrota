@@ -1,21 +1,33 @@
-%p#notice= notice
-
-%p
-  %b Topic:
-  = @talk.topic
-%p
-  %b Details:
-  = @talk.details
-%p
-  %b Starts at:
-  = @talk.starts_at
-%p
-  %b Duration:
-  = @talk.duration
-%p
-  %b Event:
-  = @talk.event_id
-
-= link_to 'Edit', edit_talk_path(@talk)
-\|
-= link_to 'Back', talks_path
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        %h1.box-title
+          = @talk.topic
+        %span.pull-right
+          = link_to edit_event_talk_path(@event, @talk), class: 'btn btn-sm btn-primary' do
+            %i.fa.fa-pencil
+            Edit
+      .box-body
+        %p
+          = @talk.details.present? ? @talk.details : "We don't have much to describe this event as of now."
+        - if @talk.tags.present?
+          %hr
+          %p
+            %span.tags
+              - @talk.tags.each do |tag|
+                = link_to "##{tag}", '#'
+        - if @event.contact_email.present? || @event.mailing_list.present?
+          %hr
+          %h4 Contacts
+          .row
+            - if @event.contact_email.present?
+              .col-md-6.col-sm-12
+                %i.fa.fa-envelope-o
+                Email :
+                = @event.contact_email
+              - if @event.mailing_list.present?
+                .col-md-6.col-sm-12
+                  %i.fa.fa-envelope-o
+                  Mailing List :
+                  = @event.mailing_list

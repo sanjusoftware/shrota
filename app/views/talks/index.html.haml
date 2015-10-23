@@ -2,7 +2,7 @@
   .col-md-12
     .box
       .box-header.with-border
-        %h4.box-title
+        %h1.box-title
           = @event.name
         %span.pull-right
           = link_to edit_user_event_path(current_user, @event), class: 'btn btn-sm btn-primary' do
@@ -29,41 +29,34 @@
             %i.fa.fa-hourglass-start
             = talks.first.starts_at.localtime.strftime('%d %b. %Y')
         - talks.each do |talk|
-          %li{:class => ('timeline-inverted' if (i+1)%2 == 0)}
-            - i = i+1
-            .timeline-badge{:class => timeline_class(talk)}
-              %i{:class => timeline_icon_class(talk)}
-            .timeline-panel
-              .timeline-heading
-                %h2.timeline-title
-                  = talk.topic
-                %p
-                  %small.text-muted
-                    = "#{talk.duration}m"
-                    %i.glyphicon.glyphicon-time
-                    = talk.starts_at.localtime.strftime('%l:%M%P')
+          = link_to event_talk_path(@event, talk) do
+            %li{:class => ('timeline-inverted' if (i+1)%2 == 0)}
+              - i = i+1
+              .timeline-badge{:class => timeline_class(talk)}
+                %i{:class => timeline_icon_class(talk)}
+              .timeline-panel
+                .timeline-heading
+                  %h2.timeline-title
+                    = talk.topic
+                  %p
+                    %small.text-muted
+                      = "#{talk.duration}m"
+                      %i.glyphicon.glyphicon-time
+                      = talk.starts_at.localtime.strftime('%l:%M%P')
+                - if talk.yet_to_start?
+                  %hr
+                  Starting in
+                  .count_down_timer{'data-date' => "#{talk.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')}"}
+                  %hr
+                - elsif talk.started?
+                  %hr
+                  Remaining showtime
+                  .count_down_timer{'data-date' => "#{talk.ends_at.strftime('%Y-%m-%d %H:%M:%S')}"}
+                  %hr
 
-                -#.timeline-presenter
-                  - talk.presenters.each do |presenter|
-                    = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
-              - if talk.yet_to_start?
-                %hr
-                Starting in
-                .count_down_timer{'data-date' => "#{talk.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')}"}
-                %hr
-              - elsif talk.started?
-                %hr
-                Remaining showtime
-                .count_down_timer{'data-date' => "#{talk.ends_at.strftime('%Y-%m-%d %H:%M:%S')}"}
-                %hr
-
-              .timeline-body
-                %p
-                  = truncate(talk.details, length: 200, omission: '... (get in to explore more)')
-              -#- if talk.ratings.present?
-                %br
-                .talk_chart
-                  = high_chart("talk_graph_#{talk.id}", talk.ended? ? talk_analysis_graph(talk) : talk_graph(talk))
+                .timeline-body
+                  %p
+                    = truncate(talk.details, length: 200, omission: '... (get in to explore more)')
       %li.time-label
         %span.bg-red
           %i.fa.fa-hourglass-start

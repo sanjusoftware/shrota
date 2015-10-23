@@ -41,3 +41,10 @@ a {
 .field_with_errors {
   @extend .has-error;
 }
+
+.box-header .box-title {
+  display: inline-block;
+  font-size: 36px;
+  margin: 0;
+  line-height: 1;
+}
