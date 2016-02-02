@@ -24,7 +24,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "AdminLTE/AdminLTE";
-@import "AdminLTE/skins/skin-black";
+@import "AdminLTE/skins/skin-black-light";
+
+.content-wrapper, .right-side {
+  min-height: 100%;
+  background-color: #fff;
+  z-index: 800;
+}
 
 a {
   -webkit-transition: all 0.3s ease;
